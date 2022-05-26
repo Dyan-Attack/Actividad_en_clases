@@ -9,12 +9,13 @@ library(lubridate) # Para ocupar la función parse_date_time
 # para la actividad
 # Fijarse en la ruta, en este caso ocupé la de mi pc, 
 #   donde tengo una carpeta donde está el script (clase 8)
-#   Dentro de esta carpeta tengo una subcarpeta llamada data
+# Dentro de esta carpeta tengo una subcarpeta llamada data
 #   donde se encuentran ambas bases de datos (Sea_projects y detalle_tipologia)
 SEA <- read.csv("data/SEA_projects.csv") 
 tipologia <- read.csv("data/detalle_tipologia.csv")
 
 #1. Remover las columnas que tienen solo argumentos NA (no hay) con remove_empty
+# De la librería "janitor"
 # Borrar la columna x1 ocupando select
 
 SEA <- SEA %>% 
@@ -23,7 +24,7 @@ tipologia <- tipologia %>%
   select(-X)
 
 
-#2. Renombrar las variables con la función select de dplyr
+#2. Renombrar las variables con la función select de dplyr del paquete tidyverse
 
 SEA <- SEA %>%
  select(
@@ -47,6 +48,8 @@ glimpse(SEA)
 # seaProjects <- seaProjects %>%
 #  mutate(fecha_calificacion = as.Date(fecha_calificacion)) %>%
 #  mutate(fecha_date = as.Date(fecha_date))
+# Corregir fechas con la función mutate del paquete tidyverse y parse_date_time
+#   de la librería "lubridate"
 
 SEA <- SEA %>%
   mutate(fecha_date = parse_date_time(fecha_date, c("dmy", "ymd"))) %>% 
