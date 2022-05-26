@@ -1,6 +1,7 @@
 # Actividad en Clases
 
 ## Se cargan las bases de datos que se ocuparán
+
 library(tidyverse) # Para ocupar las funciones select; filter; group_by; summarize; mutate
 library(janitor)# Para ocupar las funciones remove_empty
 library(lubridate) # Para ocupar la función parse_date_time
@@ -11,6 +12,7 @@ library(lubridate) # Para ocupar la función parse_date_time
 #   donde tengo una carpeta donde está el script (clase 8)
 # Dentro de esta carpeta tengo una subcarpeta llamada data
 #   donde se encuentran ambas bases de datos (Sea_projects y detalle_tipologia)
+
 SEA <- read.csv("data/SEA_projects.csv") 
 tipologia <- read.csv("data/detalle_tipologia.csv")
 
@@ -52,6 +54,7 @@ SEA <- SEA %>%
   mutate(fecha_calificacion = parse_date_time(fecha_calificacion, c("dmy", "ymd")))
 
 #Revisar nuevamente a través de la función glimpse
+
 glimpse(SEA)
 
 # Revisar consistencia en la variable región
@@ -73,6 +76,7 @@ SEA <- SEA %>%
 # El estado_cat == "Aprobado" se llamará "Aprobado"
 # El estado_cat "Rechazado se llamará "Rechazado"
 # Los demás estados_cat (TRUE) se llamarán "Otro"
+
 SEA <- SEA %>% 
   mutate(estado_cat = case_when(estado == "En Admisión" | estado == "En Calificación" ~ "En proceso",
                                 estado == "Aprobado" ~ "Aprobado",
@@ -146,9 +150,11 @@ base %>%
 
 # Hacer el mismo procedimiento pero agregando un filtro al principio
 # para filtrar los proyectos cuya inversión sea menor a 30 millones de dólares
+
 base %>% 
   filter(fecha_date > "2015-01-01",
          inversion < 30) %>% 
   ggplot(aes(x = inversion)) +
   geom_boxplot()
   
+# Fin del ejercicio
