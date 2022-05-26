@@ -43,7 +43,7 @@ SEA <- SEA %>%
 
 glimpse(SEA)
 
-# La columna fecha_date no está en formato fecha
+# La columna "fecha_date" y "fecha_calificacion" no están en formato fecha si no que en caracter
 # Corregir fechas con la función mutate del paquete tidyverse y parse_date_time
 #   de la librería "lubridate"
 
@@ -58,7 +58,7 @@ glimpse(SEA)
 
 unique(SEA$region)
 
-# Cambiar el 5 por Quinta y dejar las otras regiones tal cual a través de TRUE
+# Cambiar el "5" por "Quinta" y dejar las otras regiones tal cual a través de TRUE
 # Si no se pone TRUE, solo cambia 5 y borra todo lo demás
 # Al parecer TRUE significa todo lo demás (porque existe y eso sería TRUE)
 
