@@ -16,7 +16,7 @@ tipologia <- read.csv("data/detalle_tipologia.csv")
 
 #1. Remover las columnas que tienen solo argumentos NA (no hay) con remove_empty
 # De la librería "janitor"
-# Borrar la columna x1 ocupando select
+# Borrar la columna x1 del data frame "tipologia" ocupando select
 
 SEA <- SEA %>% 
   remove_empty(which = c("rows", "cols"))
@@ -44,10 +44,6 @@ SEA <- SEA %>%
 glimpse(SEA)
 
 # La columna fecha_date no está en formato fecha
-# Solución antigua
-# seaProjects <- seaProjects %>%
-#  mutate(fecha_calificacion = as.Date(fecha_calificacion)) %>%
-#  mutate(fecha_date = as.Date(fecha_date))
 # Corregir fechas con la función mutate del paquete tidyverse y parse_date_time
 #   de la librería "lubridate"
 
